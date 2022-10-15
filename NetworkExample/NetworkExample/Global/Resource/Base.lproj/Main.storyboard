@@ -8,6 +8,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Alamofire View Controller-->
+        <scene sceneID="qT3-zC-eEB">
+            <objects>
+                <viewController id="GYB-C0-lfX" customClass="AlamofireViewController" customModule="NetworkExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NEl-c5-CXo">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="l72-zG-xTL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RGA-Kc-Mzp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="48" y="-697"/>
+        </scene>
         <!--Moya View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
