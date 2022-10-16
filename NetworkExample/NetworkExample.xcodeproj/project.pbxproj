@@ -18,6 +18,8 @@
 		92FC701E28FA9FB100720368 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC701D28FA9FB100720368 /* MovieListView.swift */; };
 		92FC702028FA9FE200720368 /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC701F28FA9FE200720368 /* MovieListTableViewCell.swift */; };
 		92FC702228FBFC1B00720368 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC702128FBFC1B00720368 /* BaseViewController.swift */; };
+		92FC703628FC30E900720368 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 92FC703528FC30E900720368 /* .gitignore */; };
+		92FC703828FC310300720368 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC703728FC310300720368 /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		92FC701D28FA9FB100720368 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
 		92FC701F28FA9FE200720368 /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
 		92FC702128FBFC1B00720368 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		92FC703528FC30E900720368 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		92FC703728FC310300720368 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +54,7 @@
 		92FC6FF228FA95F800720368 = {
 			isa = PBXGroup;
 			children = (
+				92FC703528FC30E900720368 /* .gitignore */,
 				92FC6FFD28FA95F800720368 /* NetworkExample */,
 				92FC6FFC28FA95F800720368 /* Products */,
 			);
@@ -66,6 +71,7 @@
 		92FC6FFD28FA95F800720368 /* NetworkExample */ = {
 			isa = PBXGroup;
 			children = (
+				92FC702B28FC301500720368 /* Network */,
 				92FC701628FA991200720368 /* Global */,
 				92FC701528FA98A500720368 /* Alamofire */,
 				92FC701428FA989500720368 /* Moya */,
@@ -145,6 +151,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		92FC702B28FC301500720368 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				92FC702C28FC301B00720368 /* Base */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		92FC702C28FC301B00720368 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				92FC703728FC310300720368 /* APIKey.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -209,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92FC703628FC30E900720368 /* .gitignore in Resources */,
 				92FC700B28FA95F900720368 /* LaunchScreen.storyboard in Resources */,
 				92FC700828FA95F900720368 /* Assets.xcassets in Resources */,
 				92FC700628FA95F800720368 /* Main.storyboard in Resources */,
@@ -224,6 +247,7 @@
 			files = (
 				92FC700328FA95F800720368 /* MoyaViewController.swift in Sources */,
 				92FC6FFF28FA95F800720368 /* AppDelegate.swift in Sources */,
+				92FC703828FC310300720368 /* APIKey.swift in Sources */,
 				92FC701E28FA9FB100720368 /* MovieListView.swift in Sources */,
 				92FC700128FA95F800720368 /* SceneDelegate.swift in Sources */,
 				92FC702028FA9FE200720368 /* MovieListTableViewCell.swift in Sources */,
