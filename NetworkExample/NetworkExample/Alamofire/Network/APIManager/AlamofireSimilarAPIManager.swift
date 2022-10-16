@@ -1,5 +1,5 @@
 //
-//  AlamofireTrendAPIManger.swift
+//  AlamofireSimilarAPIManager.swift
 //  NetworkExample
 //
 //  Created by 소연 on 2022/10/16.
@@ -9,14 +9,13 @@ import Foundation
 
 import Alamofire
 
-final class AlamofireTrendAPIManager {
-    
-    static let shared = AlamofireTrendAPIManager()
+final class AlamofireSimilarAPIManager {
+    static let shared = AlamofireSimilarAPIManager()
     
     private init() { }
     
-    func fetchMovieList(type: String, time: String, completionHandler: @escaping (NetworkResult<Any>) -> Void) {
-        let url = EndPoint.trend.requestURL + "/\(type)" + "/\(time)" + "?api_key=\(APIKey.KEY)"
+    func fetchSimilarMovieList(id: Int, page: Int = 1, completionHandler: @escaping (NetworkResult<Any>) -> Void) {
+        let url = EndPoint.similar(id: id).requestURL +  "?api_key=\(APIKey.KEY)&page=\(page)"
         let header : HTTPHeaders = ["Content-Type": "application/json"]
         let dataRequest = AF.request(url,
                                      method: .get,
@@ -40,7 +39,7 @@ final class AlamofireTrendAPIManager {
     
     private func judgeStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(TrendResponse.self, from: data) else { return .pathErr }
+        guard let decodedData = try? decoder.decode(SimilarResponse.self, from: data) else { return .pathErr }
         
         switch statusCode {
         case 200:

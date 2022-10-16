@@ -54,6 +54,18 @@ extension BaseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        AlamofireSimilarAPIManager.shared.fetchSimilarMovieList(id: response[indexPath.row].id) { result in
+            switch result {
+            case .success(let result):
+                guard let data = result as? [SimilarMovie] else  { return }
+                dump(data)
+            default :
+                print("ERROR")
+            }
+        }
+    }
 }
 
 extension BaseViewController: UITableViewDataSource {

@@ -25,6 +25,8 @@
 		92FC704328FC345E00720368 /* AlamofireTrendAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC704228FC345E00720368 /* AlamofireTrendAPIManager.swift */; };
 		92FC704728FC34D700720368 /* TrendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC704628FC34D700720368 /* TrendResponse.swift */; };
 		92FC704928FC363700720368 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC704828FC363700720368 /* NetworkResult.swift */; };
+		92FC704B28FC464500720368 /* AlamofireSimilarAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC704A28FC464500720368 /* AlamofireSimilarAPIManager.swift */; };
+		92FC704D28FC496900720368 /* SimilarResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC704C28FC496900720368 /* SimilarResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		92FC704228FC345E00720368 /* AlamofireTrendAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireTrendAPIManager.swift; sourceTree = "<group>"; };
 		92FC704628FC34D700720368 /* TrendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendResponse.swift; sourceTree = "<group>"; };
 		92FC704828FC363700720368 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		92FC704A28FC464500720368 /* AlamofireSimilarAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireSimilarAPIManager.swift; sourceTree = "<group>"; };
+		92FC704C28FC496900720368 /* SimilarResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				92FC704228FC345E00720368 /* AlamofireTrendAPIManager.swift */,
+				92FC704A28FC464500720368 /* AlamofireSimilarAPIManager.swift */,
 			);
 			path = APIManager;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				92FC704628FC34D700720368 /* TrendResponse.swift */,
+				92FC704C28FC496900720368 /* SimilarResponse.swift */,
 			);
 			path = NetworkModel;
 			sourceTree = "<group>";
@@ -287,9 +293,11 @@
 				92FC700328FA95F800720368 /* MoyaViewController.swift in Sources */,
 				92FC6FFF28FA95F800720368 /* AppDelegate.swift in Sources */,
 				92FC704728FC34D700720368 /* TrendResponse.swift in Sources */,
+				92FC704D28FC496900720368 /* SimilarResponse.swift in Sources */,
 				92FC703828FC310300720368 /* APIKey.swift in Sources */,
 				92FC703F28FC335000720368 /* URLConstant.swift in Sources */,
 				92FC701E28FA9FB100720368 /* MovieListView.swift in Sources */,
+				92FC704B28FC464500720368 /* AlamofireSimilarAPIManager.swift in Sources */,
 				92FC704928FC363700720368 /* NetworkResult.swift in Sources */,
 				92FC700128FA95F800720368 /* SceneDelegate.swift in Sources */,
 				92FC704328FC345E00720368 /* AlamofireTrendAPIManager.swift in Sources */,
