@@ -22,7 +22,7 @@
 		92FC703828FC310300720368 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC703728FC310300720368 /* APIKey.swift */; };
 		92FC703D28FC32D400720368 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC703C28FC32D400720368 /* EndPoint.swift */; };
 		92FC703F28FC335000720368 /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC703E28FC335000720368 /* URLConstant.swift */; };
-		92FC704328FC345E00720368 /* AlamofireTrendAPIManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC704228FC345E00720368 /* AlamofireTrendAPIManger.swift */; };
+		92FC704328FC345E00720368 /* AlamofireTrendAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC704228FC345E00720368 /* AlamofireTrendAPIManager.swift */; };
 		92FC704728FC34D700720368 /* TrendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC704628FC34D700720368 /* TrendResponse.swift */; };
 		92FC704928FC363700720368 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC704828FC363700720368 /* NetworkResult.swift */; };
 /* End PBXBuildFile section */
@@ -44,7 +44,7 @@
 		92FC703728FC310300720368 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		92FC703C28FC32D400720368 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		92FC703E28FC335000720368 /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
-		92FC704228FC345E00720368 /* AlamofireTrendAPIManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireTrendAPIManger.swift; sourceTree = "<group>"; };
+		92FC704228FC345E00720368 /* AlamofireTrendAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireTrendAPIManager.swift; sourceTree = "<group>"; };
 		92FC704628FC34D700720368 /* TrendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendResponse.swift; sourceTree = "<group>"; };
 		92FC704828FC363700720368 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,7 +193,7 @@
 		92FC704128FC340D00720368 /* APIManager */ = {
 			isa = PBXGroup;
 			children = (
-				92FC704228FC345E00720368 /* AlamofireTrendAPIManger.swift */,
+				92FC704228FC345E00720368 /* AlamofireTrendAPIManager.swift */,
 			);
 			path = APIManager;
 			sourceTree = "<group>";
@@ -292,7 +292,7 @@
 				92FC701E28FA9FB100720368 /* MovieListView.swift in Sources */,
 				92FC704928FC363700720368 /* NetworkResult.swift in Sources */,
 				92FC700128FA95F800720368 /* SceneDelegate.swift in Sources */,
-				92FC704328FC345E00720368 /* AlamofireTrendAPIManger.swift in Sources */,
+				92FC704328FC345E00720368 /* AlamofireTrendAPIManager.swift in Sources */,
 				92FC702028FA9FE200720368 /* MovieListTableViewCell.swift in Sources */,
 				92FC702228FBFC1B00720368 /* BaseViewController.swift in Sources */,
 				92FC701828FA996400720368 /* AlamofireViewController.swift in Sources */,

@@ -9,9 +9,9 @@ import Foundation
 
 import Alamofire
 
-final class AlamofireTrendAPIManger {
+final class AlamofireTrendAPIManager {
     
-    static let shared = AlamofireTrendAPIManger()
+    static let shared = AlamofireTrendAPIManager()
     
     private init() { }
     

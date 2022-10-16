@@ -12,7 +12,7 @@ final class AlamofireViewController: BaseViewController {
     // MARK: - Network
     
     override func fetchMovieList() {
-        AlamofireTrendAPIManger.shared.fetchMovieList(type: "all", time: "week") { result in
+        AlamofireTrendAPIManager.shared.fetchMovieList(type: "all", time: "week") { result in
             switch result {
             case .success(let result):
                 dump(result)
