@@ -18,9 +18,9 @@ extension MovieService: BaseTargetType {
     var path: String {
         switch self {
         case .trend:
-            return EndPoint.trend.requestURL
+            return "/trending/all/day"
         case .similar(let id):
-            return EndPoint.similar(id: id).requestURL
+            return  "/movie/\(id)/similar"
         }
     }
     
@@ -34,7 +34,7 @@ extension MovieService: BaseTargetType {
     var task: Moya.Task {
         switch self {
         case .trend, .similar:
-            return .requestPlain
+            return .requestParameters(parameters: ["api_key": APIKey.KEY, "language" : "en-US"], encoding: URLEncoding.default)
         }
     }
 }
