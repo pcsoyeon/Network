@@ -152,6 +152,7 @@
 		92FC701C28FA9F8D00720368 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				92FC705D28FC567100720368 /* Network */,
 				92FC702A28FC2FD400720368 /* Controller */,
 				92FC702928FC2FD000720368 /* View */,
 			);
@@ -179,20 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				92FC704128FC340D00720368 /* APIManager */,
-				92FC702C28FC301B00720368 /* Base */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		92FC702C28FC301B00720368 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				92FC703728FC310300720368 /* APIKey.swift */,
-				92FC703C28FC32D400720368 /* EndPoint.swift */,
-				92FC703E28FC335000720368 /* URLConstant.swift */,
-				92FC704828FC363700720368 /* NetworkResult.swift */,
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		92FC704028FC33C300720368 /* Controller */ = {
@@ -262,6 +251,17 @@
 				92FC705728FC4F2B00720368 /* MovieService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		92FC705D28FC567100720368 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				92FC703728FC310300720368 /* APIKey.swift */,
+				92FC703C28FC32D400720368 /* EndPoint.swift */,
+				92FC703E28FC335000720368 /* URLConstant.swift */,
+				92FC704828FC363700720368 /* NetworkResult.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
