@@ -7,9 +7,11 @@
 
 import UIKit
 
-final class AlamofireViewController: UIViewController {
+final class AlamofireViewController: BaseViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Network
+    
+    override func fetchMovieList() {
+        
     }
 }

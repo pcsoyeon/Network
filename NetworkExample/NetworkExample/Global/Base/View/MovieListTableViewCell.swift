@@ -69,7 +69,7 @@ final class MovieListTableViewCell: UITableViewCell {
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             
             descriptionLabel.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 10),
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20)
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8)
         ])
     }
 }

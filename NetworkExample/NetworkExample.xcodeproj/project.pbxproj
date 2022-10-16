@@ -17,6 +17,7 @@
 		92FC701B28FA9A2600720368 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 92FC701A28FA9A2600720368 /* Moya */; };
 		92FC701E28FA9FB100720368 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC701D28FA9FB100720368 /* MovieListView.swift */; };
 		92FC702028FA9FE200720368 /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC701F28FA9FE200720368 /* MovieListTableViewCell.swift */; };
+		92FC702228FBFC1B00720368 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC702128FBFC1B00720368 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		92FC701728FA996400720368 /* AlamofireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireViewController.swift; sourceTree = "<group>"; };
 		92FC701D28FA9FB100720368 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
 		92FC701F28FA9FE200720368 /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
+		92FC702128FBFC1B00720368 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,18 +114,35 @@
 				92FC700C28FA95F900720368 /* Info.plist */,
 				92FC701328FA961A00720368 /* Resource */,
 				92FC701228FA960C00720368 /* Application */,
-				92FC701C28FA9F8D00720368 /* View */,
+				92FC701C28FA9F8D00720368 /* Base */,
 			);
 			path = Global;
 			sourceTree = "<group>";
 		};
-		92FC701C28FA9F8D00720368 /* View */ = {
+		92FC701C28FA9F8D00720368 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				92FC702A28FC2FD400720368 /* Controller */,
+				92FC702928FC2FD000720368 /* View */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		92FC702928FC2FD000720368 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				92FC701D28FA9FB100720368 /* MovieListView.swift */,
 				92FC701F28FA9FE200720368 /* MovieListTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		92FC702A28FC2FD400720368 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				92FC702128FBFC1B00720368 /* BaseViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +227,7 @@
 				92FC701E28FA9FB100720368 /* MovieListView.swift in Sources */,
 				92FC700128FA95F800720368 /* SceneDelegate.swift in Sources */,
 				92FC702028FA9FE200720368 /* MovieListTableViewCell.swift in Sources */,
+				92FC702228FBFC1B00720368 /* BaseViewController.swift in Sources */,
 				92FC701828FA996400720368 /* AlamofireViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
