@@ -15,7 +15,10 @@ final class AlamofireViewController: BaseViewController {
         AlamofireTrendAPIManager.shared.fetchMovieList(type: "all", time: "week") { result in
             switch result {
             case .success(let result):
-                dump(result)
+                guard let data = result as? [TrendMedia] else  { return }
+                self.response = data
+                
+                self.rootView.tableView.reloadData()
                 
             case .requestErr(let result):
                 print(result)

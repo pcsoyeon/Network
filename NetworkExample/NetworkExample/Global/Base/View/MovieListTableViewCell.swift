@@ -32,6 +32,7 @@ final class MovieListTableViewCell: UITableViewCell {
         label.text = "영화 상세 설명"
         label.textColor = .systemGray2
         label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.numberOfLines = 5
         return label
     }()
     
@@ -69,7 +70,16 @@ final class MovieListTableViewCell: UITableViewCell {
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             
             descriptionLabel.leadingAnchor.constraint(equalTo: posterImageView.trailingAnchor, constant: 10),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8)
         ])
+    }
+    
+    // MARK: - Data
+    
+    func setData(_ data: TrendMedia) {
+        titleLabel.text = data.title
+        
+        descriptionLabel.text = data.overview
     }
 }

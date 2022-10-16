@@ -11,12 +11,16 @@ class BaseViewController: UIViewController {
     
     // MARK: - UI Property
     
-    private let rootView = MovieListView()
+    let rootView = MovieListView()
     
     override func loadView() {
         super.loadView()
         view = rootView
     }
+    
+    // MARK: - Property
+    
+    var response: [TrendMedia] = []
     
     // MARK: - Life Cycle
     
@@ -54,11 +58,12 @@ extension BaseViewController: UITableViewDelegate {
 
 extension BaseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return response.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieListTableViewCell.identifier, for: indexPath) as? MovieListTableViewCell else { return UITableViewCell() }
+        cell.setData(response[indexPath.row])
         return cell
     }
 }
