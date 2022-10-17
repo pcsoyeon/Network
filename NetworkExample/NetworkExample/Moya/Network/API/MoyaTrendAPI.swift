@@ -15,7 +15,7 @@ final class MoyaTrendAPI {
     public private(set) var data: TrendResponse?
     
     func fetchSimilarMovieList(completion: @escaping (TrendResponse?) -> ()) {
-        trendProvider.request(.trend) { result in
+        trendProvider.request(.trend(type: "all", time: "week")) { result in
             switch result {
             case .success(let response):
                 do {

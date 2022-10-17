@@ -16,11 +16,15 @@ final class AlamofireTrendAPIManager {
     private init() { }
     
     func fetchMovieList(type: String, time: String, completionHandler: @escaping (NetworkResult<Any>) -> Void) {
-        let url = EndPoint.trend.requestURL + "/\(type)" + "/\(time)" + "?api_key=\(APIKey.KEY)"
+        let url = EndPoint.trend.requestURL + "/\(type)" + "/\(time)"
         let header : HTTPHeaders = ["Content-Type": "application/json"]
+        let params: Parameters = ["api_key" : "\(APIKey.KEY)",
+                                  "language" : "en-US"]
+        
         let dataRequest = AF.request(url,
                                      method: .get,
-                                     encoding: JSONEncoding.default,
+                                     parameters: params,
+                                     encoding: URLEncoding.default,
                                      headers: header)
         
         dataRequest.responseData { dataResponse in

@@ -10,15 +10,15 @@ import Foundation
 import Moya
 
 enum MovieService {
-    case trend
+    case trend(type: String, time: String)
     case similar(id: Int)
 }
 
 extension MovieService: BaseTargetType {
     var path: String {
         switch self {
-        case .trend:
-            return "/trending/all/day"
+        case .trend(let type, let time):
+            return "/trending/\(type)/\(time)"
         case .similar(let id):
             return  "/movie/\(id)/similar"
         }
