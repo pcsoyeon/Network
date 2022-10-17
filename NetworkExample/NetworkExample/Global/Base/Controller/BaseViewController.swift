@@ -46,6 +46,10 @@ class BaseViewController: UIViewController {
     func fetchMovieList() {
         
     }
+    
+    func touchUpMovieListCell(_ index: IndexPath) {
+        
+    }
 }
 
 // MARK: - UITableView Protocol
@@ -56,15 +60,7 @@ extension BaseViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AlamofireSimilarAPIManager.shared.fetchSimilarMovieList(id: response[indexPath.row].id) { result in
-            switch result {
-            case .success(let result):
-                guard let data = result as? [SimilarMovie] else  { return }
-                dump(data)
-            default :
-                print("ERROR")
-            }
-        }
+        touchUpMovieListCell(indexPath)
     }
 }
 
