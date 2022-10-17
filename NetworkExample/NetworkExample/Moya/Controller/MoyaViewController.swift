@@ -14,7 +14,9 @@ final class MoyaViewController: BaseViewController {
     override func fetchMovieList() {
         MoyaTrendAPI.shared.fetchSimilarMovieList { result in
             guard let result = result else { return }
-            let data = result.results
+            self.response = result.results
+            
+            self.rootView.tableView.reloadData()
         }
     }
 }
