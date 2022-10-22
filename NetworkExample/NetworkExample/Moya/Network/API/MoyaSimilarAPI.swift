@@ -1,28 +1,30 @@
 //
-//  MoyaTrendAPI.swift
+//  MoyaSimilarAPI.swift
 //  NetworkExample
 //
-//  Created by 소연 on 2022/10/16.
+//  Created by 소연 on 2022/10/22.
 //
+
+import Foundation
 
 import Moya
 
-final class MoyaTrendAPI {
+final class MoyaSimilarAPI {
     
-    static let shared: MoyaTrendAPI = MoyaTrendAPI()
+    static let shared: MoyaSimilarAPI = MoyaSimilarAPI()
     
-    private let trendProvider = MoyaProvider<MovieService>(plugins: [MoyaLoggingPlugin()])
+    private let similarProvider = MoyaProvider<MovieService>(plugins: [MoyaLoggingPlugin()])
     
     private init() { }
     
-    public private(set) var data: TrendResponse?
+    public private(set) var data: SimilarResponse?
     
-    func fetchTrendMovieListWithMoya(completion: @escaping (TrendResponse?) -> ()) {
-        trendProvider.request(.trend(type: "all", time: "week")) { result in
+    func fetchSimilarMovieListWithMoya(id: Int, completion: @escaping(SimilarResponse?) -> ()) {
+        similarProvider.request(.similar(id: id)) { result in
             switch result {
             case .success(let response):
                 do {
-                    self.data = try response.map(TrendResponse?.self)
+                    self.data = try response.map(SimilarResponse?.self)
                     guard let data = self.data else { return }
                     completion(data)
                 } catch(let error) {

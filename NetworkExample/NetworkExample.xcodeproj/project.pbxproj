@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		929DA5EF29029DBC00810B2A /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 929DA5EE29029DBC00810B2A /* Moya */; };
+		92F0C59C290412570036970E /* MoyaSimilarAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0C59B290412570036970E /* MoyaSimilarAPI.swift */; };
 		92FC6FFF28FA95F800720368 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC6FFE28FA95F800720368 /* AppDelegate.swift */; };
 		92FC700128FA95F800720368 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC700028FA95F800720368 /* SceneDelegate.swift */; };
 		92FC700328FA95F800720368 /* MoyaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC700228FA95F800720368 /* MoyaViewController.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92F0C59B290412570036970E /* MoyaSimilarAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaSimilarAPI.swift; sourceTree = "<group>"; };
 		92FC6FFB28FA95F800720368 /* NetworkExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92FC6FFE28FA95F800720368 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92FC700028FA95F800720368 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				92FC705928FC50CF00720368 /* MoyaTrendAPI.swift */,
+				92F0C59B290412570036970E /* MoyaSimilarAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				92FC700328FA95F800720368 /* MoyaViewController.swift in Sources */,
 				92FC6FFF28FA95F800720368 /* AppDelegate.swift in Sources */,
 				92FC704728FC34D700720368 /* TrendResponse.swift in Sources */,
+				92F0C59C290412570036970E /* MoyaSimilarAPI.swift in Sources */,
 				92FC704D28FC496900720368 /* SimilarResponse.swift in Sources */,
 				92FC703828FC310300720368 /* APIKey.swift in Sources */,
 				92FC703F28FC335000720368 /* URLConstant.swift in Sources */,

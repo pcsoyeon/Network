@@ -12,11 +12,19 @@ final class MoyaViewController: BaseViewController {
     // MARK: - Network
     
     override func fetchMovieList() {
-        MoyaTrendAPI.shared.fetchSimilarMovieList { result in
-            guard let result = result else { return }
-            self.response = result.results
+        MoyaTrendAPI.shared.fetchTrendMovieListWithMoya { response in
+            guard let response = response else { return }
+            self.response = response.results
             
             self.rootView.tableView.reloadData()
+        }
+    }
+    
+    override func touchUpMovieListCell(_ indexPath: IndexPath) {
+        MoyaSimilarAPI.shared.fetchSimilarMovieListWithMoya(id: self.response[indexPath.item].id) { response in
+            guard let response = response else { return }
+            
+            dump(response.results)
         }
     }
 }
