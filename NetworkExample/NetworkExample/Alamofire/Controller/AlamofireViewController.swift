@@ -12,10 +12,6 @@ final class AlamofireViewController: BaseViewController {
     // MARK: - Network
     
     override func fetchMovieList() {
-        fetchTrend()
-    }
-    
-    private func fetchTrend() {
         AlamofireTrendAPIManager.shared.fetchMovieList(type: "all", time: "week") { [weak self] result in
             guard let self = self else { return }
             
