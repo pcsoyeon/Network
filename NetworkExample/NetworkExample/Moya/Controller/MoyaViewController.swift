@@ -11,13 +11,7 @@ final class MoyaViewController: BaseViewController {
     
     // MARK: - Network
     
-    override func fetchMovieList() {
-        MoyaTrendAPI.shared.fetchSimilarMovieList { [weak self] result in
-            guard let self = self else { return }
-            guard let result = result else { return }
-            
-            self.response = result.results
-            dump(self.response)
-        }
+    override func bindData() {
+        
     }
 }

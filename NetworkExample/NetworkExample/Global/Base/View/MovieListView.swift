@@ -11,7 +11,7 @@ final class MovieListView: UIView {
     
     // MARK: - UI Property
     
-    var tableView = UITableView(frame: .zero, style: .plain)
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     
     // MARK: - Initializer
     
@@ -32,16 +32,46 @@ final class MovieListView: UIView {
     }
     
     private func setLayout() {
-        self.addSubview(tableView)
+        self.addSubview(collectionView)
         
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
     
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+}
+
+// MARK: - CollectionView
+
+extension MovieListView {
+    private func createLayout() -> UICollectionViewLayout {
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        let layout = createCompositionalLayout()
+        layout.configuration = configuration
+        return layout
+    }
+    
+    private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { (sectionIndex, NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            let itemSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalHeight(1))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            
+            let groupSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .absolute(140))
+            let group = NSCollectionLayoutGroup.horizontal(
+                layoutSize: groupSize,
+                subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            
+            return section
+        }
     }
 }
 
