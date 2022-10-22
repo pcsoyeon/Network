@@ -14,12 +14,15 @@ final class AlamofireSimilarAPIManager {
     
     private init() { }
     
-    func fetchSimilarMovieList(id: Int, page: Int = 1, completionHandler: @escaping (NetworkResult<Any>) -> Void) {
-        let url = EndPoint.similar(id: id).requestURL +  "?api_key=\(APIKey.KEY)&page=\(page)"
+    func fetchSimilarMovieList(id: Int, completionHandler: @escaping (NetworkResult<Any>) -> Void) {
+        let url = EndPoint.similar(id: id).requestURL
         let header : HTTPHeaders = ["Content-Type": "application/json"]
+        let params: Parameters = ["api_key" : "\(APIKey.KEY)",
+                                  "language" : "en-US"]
         let dataRequest = AF.request(url,
                                      method: .get,
-                                     encoding: JSONEncoding.default,
+                                     parameters: params,
+                                     encoding: URLEncoding.default,
                                      headers: header)
         
         dataRequest.responseData { dataResponse in
@@ -45,7 +48,7 @@ final class AlamofireSimilarAPIManager {
         case 200:
             return .success(decodedData.results)
         case 400:
-            return .requestErr("Bad Request")
+            return .requestErr("400 : Bad Request")
         case 500:
             return .serverErr
         default:

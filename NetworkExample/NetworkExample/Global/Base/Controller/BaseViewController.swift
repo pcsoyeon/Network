@@ -28,6 +28,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         configureDataSource()
         bindData()
+        configureCollectionView()
     }
     
     // MARK: - CollectionView
@@ -41,6 +42,10 @@ class BaseViewController: UIViewController {
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
+    }
+    
+    func configureCollectionView() {
+        
     }
     
     // MARK: - Data

@@ -12,11 +12,17 @@ final class AlamofireViewController: BaseViewController {
     // MARK: - Property
     
     private var viewModel = MovieListViewModel()
+    
+    // MARK: - UI Method
+    
+    override func configureCollectionView() {
+        rootView.collectionView.delegate = self
+    }
 
     // MARK: - Network
     
     override func bindData() {
-        viewModel.requestMovieListToAlamo { [weak self] networkResult in
+        viewModel.requestMovieListWithAlamo { [weak self] networkResult in
             guard let self = self else { return }
             
             switch networkResult {
@@ -37,5 +43,19 @@ final class AlamofireViewController: BaseViewController {
             
             self.dataSource.apply(snapshot)
         }
+        
+        viewModel.similarList.bind { response in
+            dump(response.results)
+        }
     }
 }
+
+// MARK: - UICollectionView Delegate
+
+extension AlamofireViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let id = viewModel.movieList.value[indexPath.item].id
+        viewModel.requestSimilarMovieListWithAlamo(id: id)
+    }
+}
+
