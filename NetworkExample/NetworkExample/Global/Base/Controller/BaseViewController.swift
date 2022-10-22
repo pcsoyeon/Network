@@ -31,47 +31,16 @@ class BaseViewController: UIViewController {
     }
     
     private func configureUI() {
-        setTableView()
+        configureCollectionView()
     }
     
-    private func setTableView() {
-        rootView.tableView.delegate = self
-        rootView.tableView.dataSource = self
+    private func configureCollectionView() {
         
-        rootView.tableView.register(MovieListTableViewCell.self, forCellReuseIdentifier: MovieListTableViewCell.identifier)
     }
     
     // MARK: - Network
     
     func fetchMovieList() {
         
-    }
-    
-    func touchUpMovieListCell(_ index: IndexPath) {
-        
-    }
-}
-
-// MARK: - UITableView Protocol
-
-extension BaseViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        touchUpMovieListCell(indexPath)
-    }
-}
-
-extension BaseViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return response.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieListTableViewCell.identifier, for: indexPath) as? MovieListTableViewCell else { return UITableViewCell() }
-        cell.setData(response[indexPath.row])
-        return cell
     }
 }

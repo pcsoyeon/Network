@@ -12,17 +12,15 @@ final class AlamofireViewController: BaseViewController {
     // MARK: - Network
     
     override func fetchMovieList() {
-        fetchTrend()
-    }
-    
-    private func fetchTrend() {
-        AlamofireTrendAPIManager.shared.fetchMovieList(type: "all", time: "week") { result in
+        AlamofireTrendAPIManager.shared.fetchMovieList(type: "all", time: "week") { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let result):
                 guard let data = result as? [TrendMedia] else  { return }
                 self.response = data
                 
-                self.rootView.tableView.reloadData()
+                dump(self.response)
                 
             case .requestErr(let result):
                 print(result)
