@@ -47,7 +47,7 @@ class BaseViewController: UIViewController {
         
     }
     
-    func touchUpMovieListCell(_ index: IndexPath) {
+    func touchUpMovieListCell(_ indexPath: IndexPath) {
         
     }
 }

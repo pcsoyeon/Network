@@ -16,16 +16,15 @@ final class AlamofireViewController: BaseViewController {
     }
     
     private func fetchTrend() {
-        AlamofireTrendAPIManager.shared.fetchMovieList(type: "all", time: "week") { result in
+        AlamofireTrendAPIManager.shared.fetchMovieList(type: "all", time: "week") { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let result):
                 guard let data = result as? [TrendMedia] else  { return }
                 self.response = data
                 
                 self.rootView.tableView.reloadData()
-                
-            case .requestErr(let result):
-                print(result)
                 
             case .serverErr:
                 self.makeAlert(title: "알림", message: "서버 오류입니다. 잠시 후 다시 시도해주세요 :(")
@@ -36,15 +35,14 @@ final class AlamofireViewController: BaseViewController {
         }
     }
     
-    override func touchUpMovieListCell(_ index: IndexPath) {
-        AlamofireSimilarAPIManager.shared.fetchSimilarMovieList(id: self.response[index.row].id) { result in
+    override func touchUpMovieListCell(_ indexPath: IndexPath) {
+        AlamofireSimilarAPIManager.shared.fetchSimilarMovieList(id: self.response[indexPath.row].id) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let result):
                 guard let response = result as? [SimilarMovie] else  { return }
                 dump(response)
-                
-            case .requestErr(let result):
-                print(result)
                 
             case .serverErr:
                 self.makeAlert(title: "알림", message: "서버 오류입니다. 잠시 후 다시 시도해주세요 :(")
