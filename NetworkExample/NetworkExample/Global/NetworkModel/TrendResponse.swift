@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Trend Response
 
-struct TrendResponse: Codable {
+struct TrendResponse: Codable, Hashable {
     let results: [TrendMedia]
     let page, totalPages, totalResults: Int
 
@@ -22,7 +22,7 @@ struct TrendResponse: Codable {
 
 // MARK: - Result
 
-struct TrendMedia: Codable {
+struct TrendMedia: Codable, Hashable {
     let posterPath: String
     let backdropPath: String
     let originalTitle, title: String?

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MovieListTableViewCell: UITableViewCell {
+final class MovieListCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "MovieListTableViewCell"
     
@@ -38,8 +38,8 @@ final class MovieListTableViewCell: UITableViewCell {
     
     // MARK: - Initializer
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         configureUI()
         setLayout()
     }
