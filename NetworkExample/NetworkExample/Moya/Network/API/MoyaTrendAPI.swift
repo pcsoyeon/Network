@@ -17,8 +17,8 @@ final class MoyaTrendAPI {
     
     public private(set) var data: TrendResponse?
     
-    func fetchTrendMovieListWithMoya(completion: @escaping (TrendResponse?) -> ()) {
-        trendProvider.request(.trend(type: "all", time: "week")) { result in
+    func fetchTrendMovieListWithMoya(type: String, time: String, completion: @escaping (TrendResponse?) -> ()) {
+        trendProvider.request(.trend(type: type, time: time)) { result in
             switch result {
             case .success(let response):
                 do {
