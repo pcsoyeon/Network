@@ -11,6 +11,11 @@ final class AlamofireViewController: BaseViewController {
 
     // MARK: - Network
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+    }
+    
     override func fetchMovieList() {
         AlamofireTrendAPIManager.shared.fetchMovieList(type: MediaType.all.rawValue, time: TimeType.week.rawValue) { [weak self] result in
             guard let self = self else { return }
