@@ -36,6 +36,25 @@ final class AlamofireViewController: BaseViewController {
         }
     }
     
+    override func touchUpMovieListCell(_ index: IndexPath) {
+        AlamofireSimilarAPIManager.shared.fetchSimilarMovieList(id: self.response[index.row].id) { result in
+            switch result {
+            case .success(let result):
+                guard let response = result as? [SimilarMovie] else  { return }
+                dump(response)
+                
+            case .requestErr(let result):
+                print(result)
+                
+            case .serverErr:
+                self.makeAlert(title: "알림", message: "서버 오류입니다. 잠시 후 다시 시도해주세요 :(")
+                
+            default :
+                print("ERROR")
+            }
+        }
+    }
+    
     // MARK: - Custom Method
     
     private func makeAlert(title : String,
