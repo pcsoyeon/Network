@@ -14,7 +14,11 @@ enum MovieService {
     case similar(id: Int)
 }
 
-extension MovieService: BaseTargetType {
+extension MovieService: TargetType {
+    var baseURL: URL {
+        return URL(string: URLConstant.BaseURL)!
+    }
+    
     var path: String {
         switch self {
         case .trend(let type, let time):
@@ -24,11 +28,19 @@ extension MovieService: BaseTargetType {
         }
     }
     
+    var headers: [String : String]? {
+        return ["Content-Type": "application/json"]
+    }
+    
     var method: Moya.Method {
         switch self {
         case .trend, .similar:
             return .get
         }
+    }
+    
+    var sampleData: Data {
+        return Data()
     }
     
     var task: Moya.Task {
