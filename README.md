@@ -1,5 +1,3 @@
-# Network
-
 > ### 🌱 SeSAC Weekly Session  </br>
 > **Moya가 모야?** _(feat.모야 없이 모야처럼 통신하기)_
 
@@ -43,10 +41,11 @@ Moya도 Alamofire도 결국 네트워크 통신은 URLSession으로 통신합니
 </br>
 </br>
 
-_추상화란?_ </br>
+```
+추상화란? </br>
 객체들의 공통적인 부분을 뽑아내서 따로 구현해 놓은 것을 의미, </br>
 공통적인 부분만 골라 구현을 했기 때문에, 하나 하나 자세하게 구현하지 못하고 추상적으로 구현이 되어 있기 때문에 추상화라고 한다.  
-
+```
 
 </br>
 </br>
@@ -372,11 +371,175 @@ final class MoyaTrendAPI {
 </br>
 
 ### URLRequestConvertible
-참고하면 좋을 블로그 : [Takki Dev](https://taekki-dev.tistory.com/23) 
+참고하면 좋을 블로그 : [Taekki Dev](https://taekki-dev.tistory.com/23) 
 
 </br>
 </br>
 
 자, 이 URLRequestConvertible 프로토콜을 사용해서 좀 더 안정적으로, 서버 통신을 해봅시다. </br>
 
-(..준비중..)
+URLRequestConvertible ???  </br>
+모르면 뭐다? 공식 문서를 보자. </br>
+
+```
+// MARK: -
+
+/// Types adopting the `URLRequestConvertible` protocol can be used to safely construct `URLRequest`s.
+public protocol URLRequestConvertible {
+    /// Returns a `URLRequest` or throws if an `Error` was encountered.
+    ///
+    /// - Returns: A `URLRequest`.
+    /// - Throws:  Any error thrown while constructing the `URLRequest`.
+    func asURLRequest() throws -> URLRequest
+}
+
+extension URLRequestConvertible {
+    /// The `URLRequest` returned by discarding any `Error` encountered.
+    public var urlRequest: URLRequest? { try? asURLRequest() }
+}
+
+extension URLRequest: URLRequestConvertible {
+    /// Returns `self`.
+    public func asURLRequest() throws -> URLRequest { self }
+}
+```
+</br>
+
+
+
+
+Moya에서 추상화 된 계층을 통해서 서버 통신을 해서, 네트워크 코드를 개선했다. </br>
+-> Alamofire로도 추상화 된 어떠한 계층을 만들면 되지 않을까 ? ?? ? 
+
+</br>
+</br>
+
+정답. </br>
+🔥 Router 🔥 를 만들어서 추상화 된 계층을 만들고, 이것으로 통신을 해보자.
+- Router 
+```
+import Foundation
+
+import Alamofire
+
+enum MovieRouter: URLRequestConvertible {
+    case trend(type: String, time: String)
+    case similar(id: Int)
+}
+
+extension MovieRouter {
+    var baseURL: URL {
+        return URL(string: URLConstant.BaseURL)!
+    }
+    
+    var path: String {
+        switch self {
+        case .trend(let type, let time):
+            return "/trending/\(type)/\(time)"
+        case .similar(let id):
+            return  "/movie/\(id)/similar"
+        }
+    }
+    
+    var headers: [String : String] {
+        return ["Content-Type": "application/json"]
+    }
+    
+    var method: HTTPMethod {
+        switch self {
+        case .trend, .similar:
+            return .get
+        }
+    }
+    
+    var parameters: [String: String] {
+        switch self {
+        case .trend, .similar:
+            return ["api_key": APIKey.KEY, "language" : "en-US"]
+        }
+    }
+    
+    func asURLRequest() throws -> URLRequest {
+        let url = baseURL.appendingPathComponent(path)
+        
+        var request = URLRequest(url: url)
+        request.method = method
+        request.headers = HTTPHeaders(headers)
+        
+        switch self {
+        case .trend, .similar:
+            request = try URLEncodedFormParameterEncoder().encode(parameters, into: request)
+        }
+        
+        return request
+    }
+}
+```
+
+그리고 API 파일에서 통신을 하자 !!! </br>
+```
+import Foundation
+
+import Alamofire
+
+final class MovieAPI {
+    
+    static let shared = MovieAPI()
+    
+    private init() { }
+    
+    func fetchMovieList(type: String, time: String, completionHandler: @escaping (NetworkResult<Any>) -> Void) {
+        AF.request(MovieRouter.trend(type: type, time: time))
+            .validate(statusCode: 200...500)
+            .responseData { dataResponse in
+                switch dataResponse.result {
+                case .success:
+                    guard let statusCode = dataResponse.response?.statusCode else { return }
+                    guard let value = dataResponse.value else { return }
+                    
+                    let networkResult = self.judgeStatus(by: statusCode, value)
+                    completionHandler(networkResult)
+                    
+                case .failure:
+                    completionHandler(.pathErr)
+                }
+            }
+    }
+    
+    private func judgeStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+        let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(TrendResponse.self, from: data) else { return .pathErr }
+        
+        switch statusCode {
+        case 200:
+            return .success(decodedData.results)
+        case 400:
+            return .requestErr("Bad Request")
+        case 500:
+            return .serverErr
+        default:
+            return .networkFail
+        }
+    }
+}
+```
+</br>
+
+그러면, Alamofire만 이용해도, Moya처럼 추상화 된 코드로 서버 통신을 할 수 있다. </br>
+= Type - Safe 하다. </br>
+= 간편하다. </br>
+
+## 끝으로 ..
+🤔 Moya를 반드시 사용해야 해? </br>
+🤔 네트워트 코드를 왜 추상화 해야 하는데? 
+</br>
+</br>
+
+### SOKYTE Says ..
+✅ 놓치는 부분을 잡을 수 있다. </br>
+✅ 협업 시에 용이하다. </br>
+✅ Request와 Response만 주의하면 된다. </br>
+
+
+### Moya가 모야 ???
+모야는 알라모파이어의 서버 통신 코드를 한번 더 추상화 하여 네크워크 코드의 가독성을 높이고 네트워크 계층을 템플릿화하여 재사용성을 높인 라이브러리로, 개발자는 이런 장점으로 오로지 Response와 Request만을 신경쓰면 된다. 컴파일 시 API Endpoint가 올바른지 확인할 수 있고 Enum을 이용해서 언제, 어디에 사용될지 안전하게 즉, Type-Safe하게 정의된다. 또한 유닛 테스트에 용이한 구조로 되어 있어 테스트가 쉽다.
