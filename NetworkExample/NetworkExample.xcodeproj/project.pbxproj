@@ -32,7 +32,6 @@
 		92FC704928FC363700720368 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC704828FC363700720368 /* NetworkResult.swift */; };
 		92FC704B28FC464500720368 /* AlamofireSimilarAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC704A28FC464500720368 /* AlamofireSimilarAPIManager.swift */; };
 		92FC704D28FC496900720368 /* SimilarResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC704C28FC496900720368 /* SimilarResponse.swift */; };
-		92FC705128FC4CFD00720368 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC705028FC4CFD00720368 /* BaseTargetType.swift */; };
 		92FC705428FC4DA800720368 /* MoyaPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC705328FC4DA800720368 /* MoyaPlugin.swift */; };
 		92FC705828FC4F2B00720368 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC705728FC4F2B00720368 /* MovieService.swift */; };
 		92FC705A28FC50CF00720368 /* MoyaTrendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FC705928FC50CF00720368 /* MoyaTrendAPI.swift */; };
@@ -65,7 +64,6 @@
 		92FC704828FC363700720368 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		92FC704A28FC464500720368 /* AlamofireSimilarAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireSimilarAPIManager.swift; sourceTree = "<group>"; };
 		92FC704C28FC496900720368 /* SimilarResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarResponse.swift; sourceTree = "<group>"; };
-		92FC705028FC4CFD00720368 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		92FC705328FC4DA800720368 /* MoyaPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaPlugin.swift; sourceTree = "<group>"; };
 		92FC705728FC4F2B00720368 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		92FC705928FC50CF00720368 /* MoyaTrendAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaTrendAPI.swift; sourceTree = "<group>"; };
@@ -285,7 +283,6 @@
 		92FC705228FC4D0000720368 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				92FC705028FC4CFD00720368 /* BaseTargetType.swift */,
 				92FC705328FC4DA800720368 /* MoyaPlugin.swift */,
 			);
 			path = Base;
@@ -396,7 +393,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92FC705128FC4CFD00720368 /* BaseTargetType.swift in Sources */,
 				92FC700328FA95F800720368 /* MoyaViewController.swift in Sources */,
 				92FC6FFF28FA95F800720368 /* AppDelegate.swift in Sources */,
 				92FC704728FC34D700720368 /* TrendResponse.swift in Sources */,
