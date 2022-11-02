@@ -11,11 +11,13 @@ import Alamofire
 
 final class MovieAPI {
     
+    // 싱글톤
     static let shared = MovieAPI()
     
     private init() { }
     
     func fetchMovieList(type: String, time: String, completionHandler: @escaping (NetworkResult<Any>) -> Void) {
+        // 어떤 request case를 사용할 것인지 선택 
         AF.request(MovieRouter.trend(type: type, time: time))
             .validate(statusCode: 200...500)
             .responseData { dataResponse in
@@ -33,7 +35,9 @@ final class MovieAPI {
             }
     }
     
+    // 상태코드 분기처리
     private func judgeStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+        // decode 
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(TrendResponse.self, from: data) else { return .pathErr }
         
