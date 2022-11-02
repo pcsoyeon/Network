@@ -12,7 +12,7 @@ final class MoyaTrendAPI {
     // 싱글톤 패턴
     static let shared: MoyaTrendAPI = MoyaTrendAPI()
     
-    //
+    // MoyaProvider라는 BaseProvider로 Provider를 구현하되, 조건(Target == API)에 따라 다양한 Provider를 생성해 구분된 네트워크 작업을 구현
     private let trendProvider = MoyaProvider<MovieService>(plugins: [MoyaLoggingPlugin()])
     
     private init() { }
