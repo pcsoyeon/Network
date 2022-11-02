@@ -12,7 +12,8 @@ final class MoyaViewController: BaseViewController {
     // MARK: - Network
     
     override func fetchMovieList() {
-        MoyaTrendAPI.shared.fetchTrendMovieListWithMoya(type: MediaType.all.rawValue, time: TimeType.week.rawValue) { response in
+        MoyaTrendAPI.shared.fetchTrendMovieListWithMoya(type: MediaType.all.rawValue, time: TimeType.week.rawValue) { [weak self] response in
+            guard let self = self else { return }
             guard let response = response else { return }
             self.response = response.results
             

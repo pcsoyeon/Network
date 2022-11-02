@@ -10,7 +10,10 @@ import Foundation
 import Alamofire
 
 final class AlamofireSimilarAPIManager {
+    
     static let shared = AlamofireSimilarAPIManager()
+    
+    typealias completionHandler = (NetworkResult<Any>) -> Void
     
     private init() { }
     
@@ -25,7 +28,9 @@ final class AlamofireSimilarAPIManager {
                                      encoding: URLEncoding.default,
                                      headers: header)
         
-        dataRequest.responseData { dataResponse in
+        dataRequest.responseData { [weak self] dataResponse in
+            guard let self = self else { return }
+            
             switch dataResponse.result {
             case .success:
                 guard let statusCode = dataResponse.response?.statusCode else { return }
@@ -42,12 +47,12 @@ final class AlamofireSimilarAPIManager {
     
     private func judgeStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(SimilarResponse.self, from: data) else { return .pathErr }
+        guard let decodedData = try? decoder.decode(TrendResponse.self, from: data) else { return .pathErr }
         
         switch statusCode {
-        case 200:
+        case 200..<300:
             return .success(decodedData.results)
-        case 400:
+        case 400..<500:
             return .requestErr("Bad Request")
         case 500:
             return .serverErr
