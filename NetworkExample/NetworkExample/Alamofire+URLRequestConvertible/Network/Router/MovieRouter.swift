@@ -9,12 +9,12 @@ import Foundation
 
 import Alamofire
 
-enum MovieRouter: URLRequestConvertible {
+enum MovieRouter {
     case trend(type: String, time: String)
     case similar(id: Int)
 }
 
-extension MovieRouter {
+extension MovieRouter: URLRequestConvertible {
     // Moya의 TargetType처럼 필요한 요소들을 관리
     // 1. baseURL
     var baseURL: URL {
